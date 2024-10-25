@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { mockPosts } from 'src/lib/mockData'
+import { mockPosts } from '@/lib/mockData'
 
 export default function Home() {
   return (
