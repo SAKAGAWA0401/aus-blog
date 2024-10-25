@@ -2,9 +2,10 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { mockPosts } from '@/lib/mockData'
 
-type PageProps = {
-    params: { slug: string }
-  }
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
 export async function generateStaticParams() {
   return mockPosts.map((post) => ({
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function BlogPost({ params }: PageProps) {
+export default async function BlogPost({ params }: Props) {
   const post = mockPosts.find(p => p.slug === params.slug)
 
   if (!post) {
