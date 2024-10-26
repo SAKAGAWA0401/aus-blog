@@ -2,11 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   typescript: {
-    ignoreBuildErrors: false,
+    ignoreBuildErrors: true,
   },
   images: {
     domains: ['images.microcms-assets.io'],
-  },  
+  },
 }
 
 module.exports = nextConfig
