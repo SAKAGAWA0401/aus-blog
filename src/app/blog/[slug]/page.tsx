@@ -2,23 +2,30 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { mockPosts } from '@/lib/mockData'
 
+// ページのパラメータ型
 type Props = {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateStaticParams() {
-  return mockPosts.map((post) => ({
-    slug: post.slug,
-  }))
-}
-
-export default async function BlogPost({ params }: Props) {
-  const post = mockPosts.find(p => p.slug === params.slug)
-
-  if (!post) {
-    notFound()
+    params: { slug: string };
+  };
+  
+  // 静的パスを生成する
+  export async function generateStaticParams() {
+    return mockPosts.map((post) => ({
+      slug: post.slug,
+    }));
   }
+  
+  // ブログ記事を同期的に取得するコンポーネント
+  export default function BlogPost({ params }: Props) {
+    // params.slugをそのまま参照
+    const slug = params.slug;
+  
+    // slugが存在し、該当する記事があるかをチェック
+    const post = mockPosts.find((p) => p.slug === slug);
+  
+    // 記事が見つからない場合は404ページを表示
+    if (!post) {
+      notFound();  // Next.jsの404ページ処理
+    }
 
   return (
     <article className="container mx-auto px-4 py-8">
