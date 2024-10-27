@@ -3,19 +3,16 @@ import { notFound } from 'next/navigation'
 // import { mockPosts } from '@/lib/mockData'
 import { getBlogs, getBlogBySlug } from '@/lib/microcms'
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
     const blogs = await getBlogs({ fields: ['id'] })
     return blogs.contents.map((blog) => ({
         slug: blog.id,
     }))
 }
 
-type Props = {
-    params: { slug: string }
-}
-
-export default async function BlogPost({ params }: Props) {
-    const blog = await getBlogBySlug(params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;  // 非同期でparamsを解決
+    const blog = await getBlogBySlug(slug);
 
     if (!blog) {
         notFound();
