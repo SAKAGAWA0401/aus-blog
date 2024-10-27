@@ -1,30 +1,18 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 // import { mockPosts } from '@/lib/mockData'
-import { getBlogs, getBlogBySlug } from '@/lib/microcms';
-import { Metadata } from 'next'
-
-type Props = {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const blog = await getBlogBySlug(params.slug)
-    return { 
-      title: blog.title,
-      description: blog.content.substring(0, 100) // 最初の100文字を説明として使用
-    }
-  }
+import { getBlogs, getBlogBySlug } from '@/lib/microcms'
 
 export async function generateStaticParams() {
-const blogs = await getBlogs({ fields: ['id'] })
-return blogs.contents.map((blog) => ({
-    slug: blog.id,
-}))
+    const blogs = await getBlogs({ fields: ['id'] })
+    return blogs.contents.map((blog) => ({
+        slug: blog.id,
+    }))
 }
 
-export const revalidate = 3600; // 1時間ごとに再検証
+type Props = {
+    params: { slug: string }
+}
 
 export default async function BlogPost({ params }: Props) {
     const blog = await getBlogBySlug(params.slug);
