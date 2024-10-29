@@ -72,11 +72,6 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
                   ホーム
                 </Link>
               </li>
-              <li>
-                <Link href="/admin" className="hover:underline">
-                  管理画面
-                </Link>
-              </li>
             </ul>
           </nav>
         </header>
