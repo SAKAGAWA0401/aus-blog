@@ -30,8 +30,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: [
-        '/admin/:path*', // admin配下のすべてのルートに認証を適用
-        '/blog/:path*',  // blog配下のすべてのルートに認証を適用
-    ],
+   matcher: ['/((?!api|_next/static|favicon.ico).*)'],
 };
