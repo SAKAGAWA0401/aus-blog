@@ -9,11 +9,12 @@ export function middleware(request: NextRequest) {
   }
 
   const auth = {
-    username: process.env.BASIC_AUTH_USERNAME || 'your_username',
-    password: process.env.BASIC_AUTH_PASSWORD || 'your_password'
+    username: process.env.BASIC_AUTH_USERNAME,
+    password: process.env.BASIC_AUTH_PASSWORD
   };
 
   const authorization = request.headers.get('authorization') || '';
+
   const [username, password] = Buffer.from(
     authorization.split(' ')[1] || '',
     'base64'
@@ -30,5 +31,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-   matcher: ['/((?!api|_next/static|favicon.ico).*)'],
+  matcher: ['/((?!api|_next/static|favicon.ico).*)'],
 };
