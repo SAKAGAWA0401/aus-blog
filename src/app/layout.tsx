@@ -2,6 +2,7 @@ import '@/app/globals.css'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import Profile from '@/components/Profile';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,6 +36,18 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="ja">
       <head>
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm-head"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTKJSSFS');
+            `,
+          }}
+        />
+        {/* End Google Tag Manager */}
         <meta name="keywords" content="オーストラリア留学, ワーキングホリデー, 未婚カップル, 共同生活, FX, お金, 家探し, 仕事" />
         <meta name="author" content="Your Name" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,6 +77,16 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
         </script>
       </head>
       <body className={inter.className}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KTKJSSFS"
+            height="0" 
+            width="0" 
+            style={{display:'none',visibility:'hidden'}}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <header className="bg-indigo-600 text-white">
           <nav className="container mx-auto px-4 py-4">
             <ul className="flex space-x-4">
