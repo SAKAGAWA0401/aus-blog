@@ -1,7 +1,7 @@
 'use server'
 
 import { google } from 'googleapis';
-import { WebClient } from '@slack/web-api'
+import { WebClient } from '@slack/web-api';
 
 const slackToken = process.env.SLACK_TOKEN; // 環境変数でSlackトークンを管理
 const slackChannel = process.env.SLACK_CHANNEL; // 通知先のチャンネルID

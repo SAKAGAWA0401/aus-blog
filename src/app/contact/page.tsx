@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
-import { submitContactForm } from '@/lib/actions/contact-actions'
+// import { submitContactForm } from '@/lib/actions/contact-actions' →routes.tsに記述されているため削除
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -18,16 +18,20 @@ export default function ContactPage() {
     const formData = new FormData(e.currentTarget)
 
     try {
-      const result = await submitContactForm(formData)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
       if (result.success) {
         toast({
           title: "Message sent",
           description: "Thank you for your message. We'll get back to you soon.",
         })
-        // Reset form fields
-        e.currentTarget.reset()
+        e.currentTarget.reset();
       } else {
-        throw new Error('Failed to send message')
+        throw new Error(result.message || 'Failed to send message')
       }
     } catch {
       toast({
