@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: '純ジャパアラサー、オーストラリアワーホリ留学する',
     description: '30歳間近ギリギリでのワーキングホリデー、未婚カップルが海外で共同生活をする上でのノウハウや生活に役立ち情報を発信するブログです。',
-    url: 'https://aus-blog.vercel.app/',
+    url: 'https://aus-blog.sloperiver.com/',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -51,7 +51,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
         <meta name="keywords" content="オーストラリア留学, ワーキングホリデー, 未婚カップル, 共同生活, FX, お金, 家探し, 仕事" />
         <meta name="author" content="Your Name" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://aus-blog.vercel.app/" />
+        <link rel="canonical" href="https://aus-blog.sloperiver.com/" />
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="純ジャパアラサー、オーストラリアワーホリ留学する" />
@@ -83,18 +83,16 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
             src="https://www.googletagmanager.com/ns.html?id=GTM-KTKJSSFS"
             height="0" 
             width="0" 
-            style={{display:'none',visibility:'hidden'}}
+            className="hiddenIframe"
           ></iframe>
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         <header className="bg-indigo-600 text-white">
           <nav className="container mx-auto px-4 py-4">
             <ul className="flex space-x-4">
-              <li>
-                <Link href="/" className="hover:underline">
-                  ホーム
-                </Link>
-              </li>
+              <li><Link href="/" className="hover:underline">Home</Link></li>
+              <li><Link href="/contact" className="text-white hover:underline">Contact</Link></li>
+              <li><Link href="/privacy" className="text-white hover:underline">Privacy</Link></li>
             </ul>
           </nav>
         </header>
