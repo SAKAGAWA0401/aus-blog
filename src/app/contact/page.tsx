@@ -15,16 +15,17 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true)
 
-    const formData = new FormData(e.currentTarget)
+    const formElement = e.currentTarget; // e.currentTargetを変数に保存
+    const formData = new FormData(formElement)
 
     try {
         const result = await submitContactForm(formData);
       if (result.success) {
         toast({
-          title: "Message sent",
-          description: "Thank you for your message. We'll get back to you soon.",
+        title: "Message sent",
+        description: "Thank you for your message. We'll get back to you soon.",
         })
-        e.currentTarget.reset();
+        formElement.reset();
       } else {
         throw new Error(result.message || 'Failed to send message')
       }

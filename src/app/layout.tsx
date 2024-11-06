@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import Profile from '@/components/Profile';
 import Script from 'next/script';
+import { ToastProvider } from "@/components/ui/toast"; // shadcnのToastProviderをインポート
+import { Toaster } from "@/components/ui/toaster"; // トーストの表示用コンポーネント
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -96,16 +98,18 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
             </ul>
           </nav>
         </header>
-
-        <div className="container mx-auto px-4 py-8">
-          <div className="lg:flex lg:space-x-8">
-            {/* メインコンテンツ（記事部分） */}
-            <main className="lg:w-2/3">
-              {children}
-            </main>
-            <Profile />
+        <ToastProvider>
+          <Toaster />
+          <div className="container mx-auto px-4 py-8">
+            <div className="lg:flex lg:space-x-8">
+              {/* メインコンテンツ（記事部分） */}
+              <main className="lg:w-2/3">
+                {children}
+              </main>
+              <Profile />
+            </div>
           </div>
-        </div>
+        </ToastProvider>
 
         <footer className="bg-gray-100 mt-8">
           <div className="container mx-auto px-4 py-4 text-center text-gray-600">
