@@ -1,4 +1,4 @@
-export type Blog = {
+export type BlogPost = {
     id: string;
     createdAt: string;
     updatedAt: string;
@@ -22,7 +22,7 @@ export type Blog = {
   };
   
   export type BlogResponse = {
-    contents: Blog[];
+    contents: BlogPost[];
     totalCount: number;
     offset: number;
     limit: number;

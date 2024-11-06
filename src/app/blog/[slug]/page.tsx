@@ -1,18 +1,36 @@
+import { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 // import { mockPosts } from '@/lib/mockData'
-import { getBlogs, getBlogBySlug } from '@/lib/microcms'
+// import { getBlogs, getBlogBySlug } from '@/lib/microcms'
+import { getBlogPostBySlug } from '@/lib/actions/blog-actions'
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-    const blogs = await getBlogs({ fields: ['id'] })
-    return blogs.contents.map((blog) => ({
-        slug: blog.id,
-    }))
+  
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;  // 非同期でparamsを解決
+    const post = await getBlogPostBySlug(slug)
+
+    if (!post) {
+        return {
+        title: 'Post Not Found',
+        }
+    }
+
+    return {
+        title: `${post?.title || 'Untitled'} | My Perth Study Blog`,
+        description: `Read about ${post.title} on My Perth Study Blog`,
+        openGraph: {
+        title: post.title,
+        description: `Read about ${post.title} on My Perth Study Blog`,
+        type: 'article',
+        publishedTime: post.publishedAt,
+        },
+    }
 }
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;  // 非同期でparamsを解決
-    const blog = await getBlogBySlug(slug);
+    const blog = await getBlogPostBySlug(slug)
 
     if (!blog) {
         notFound();
