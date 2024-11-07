@@ -8,7 +8,7 @@ export async function getBlogPosts(page: number = 1, perPage: number = 10): Prom
 
   const response: BlogResponse = await client.get({
     endpoint: 'blog-contents',
-    queries: { offset, limit: perPage },
+    queries: { offset, limit: perPage, filters: 'type[equals]article' },
   })
 
   return {
@@ -26,6 +26,21 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     return post
   } catch (error) {
     console.error(`Failed to fetch blog post with slug ${slug}:`, error)
+    return null
+  }
+}
+
+// プライバシーポリシーを取得する関数
+export async function getPrivacyPolicy(): Promise<BlogPost | null> {
+  try {
+    const response: BlogResponse = await client.get({
+      endpoint: 'blog-contents',
+      queries: { filters: 'type[equals]privacy', limit: 1 },
+    })
+
+    return response.contents[0] || null
+  } catch (error) {
+    console.error('Failed to fetch privacy policy:', error)
     return null
   }
 }
