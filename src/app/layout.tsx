@@ -34,7 +34,12 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({children,}: {children: React.ReactNode}) {
+interface LayoutProps {
+  children: React.ReactNode
+  showProfile?: boolean
+}
+
+export default function RootLayout({ children, showProfile = true }: LayoutProps) {
   return (
     <html lang="ja">
       <head>
@@ -106,7 +111,7 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
               <main className="lg:w-2/3">
                 {children}
               </main>
-              <Profile />
+              {showProfile && <Profile />}
             </div>
           </div>
         </ToastProvider>
