@@ -35,7 +35,7 @@ export async function submitContactForm(formData: FormData) {
     // Add to Google Sheets
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
-      range: 'A1', // Assumes the first sheet in the spreadsheet
+      range: 'Sheet1!A1', // Assumes the first sheet in the spreadsheet
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[japanTime, name, email, message]],
