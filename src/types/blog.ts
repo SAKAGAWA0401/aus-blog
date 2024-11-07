@@ -19,6 +19,7 @@ export type BlogPost = {
       revisedAt: string;
       name: string;
     };
+    type: string;
   };
   
   export type BlogResponse = {
