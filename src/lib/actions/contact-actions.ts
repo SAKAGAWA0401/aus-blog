@@ -24,6 +24,7 @@ export async function submitContactForm(formData: FormData) {
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const message = formData.get('message') as string;
+  const japanTime = new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
 
   // Validate input
   if (!name || !email || !message) {
@@ -37,7 +38,7 @@ export async function submitContactForm(formData: FormData) {
       range: 'A1', // Assumes the first sheet in the spreadsheet
       valueInputOption: 'USER_ENTERED',
       requestBody: {
-        values: [[new Date().toISOString(), name, email, message]],
+        values: [[japanTime, name, email, message]],
       },
     });
 
@@ -48,7 +49,7 @@ export async function submitContactForm(formData: FormData) {
 
     await slackClient.chat.postMessage({
       channel: slackChannel,
-      text: `New contact form submission:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      text: `<@U07V0GXL5U4> *New contact form submission:*\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`,
     });
 
     return { success: true, message: 'Form submitted successfully' };
