@@ -9,9 +9,9 @@ export default async function PrivacyPage() {
       <div className="prose">
         {privacyPolicy ? (
           <>
+            <div dangerouslySetInnerHTML={{ __html: privacyPolicy.content }} />
             <p>Last updated: {new Date(privacyPolicy.revisedAt).toLocaleDateString()}</p>
             <p>Published on: {new Date(privacyPolicy.publishedAt).toLocaleDateString()}</p>
-            <div dangerouslySetInnerHTML={{ __html: privacyPolicy.content }} />
           </>
         ) : (
           <p>Privacy policy content could not be loaded.</p>
