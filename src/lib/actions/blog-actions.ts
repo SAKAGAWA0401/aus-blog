@@ -33,11 +33,11 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 // top記事を取得する関数
 export async function getTopContent(): Promise<BlogPost | null> {
   try {
-    const topContent: BlogPost = await client.get({
+    const topContent: BlogResponse = await client.get({
       endpoint: 'blog-contents',
       queries: { filters: 'type[equals]top-content', limit: 1 },
     })
-    return topContent
+    return topContent.contents[0]
   } catch (error) {
     console.error(`Failed to fetch top-content:`, error)
     return null
