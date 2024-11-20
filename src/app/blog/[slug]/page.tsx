@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {new Date(blog.publishedAt).toLocaleDateString()}
             </time>
             <div
-                className="prose prose-sm lg:prose-xl max-w-none"
+                className="prose prose-sm lg:prose-base max-w-none"
                 dangerouslySetInnerHTML={{ __html: blog.content }}
             />
         </article>

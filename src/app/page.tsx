@@ -1,3 +1,6 @@
+// ISRの再生成間隔を設定
+export const revalidate = 600; // 10分ごとに再生成
+
 import Link from 'next/link'
 import Image from 'next/image'
 // import { mockPosts } from '@/lib/mockData' mockPosts→blogs,post→blogに変換
