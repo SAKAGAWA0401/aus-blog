@@ -47,10 +47,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 className="w-full h-64 object-cover mb-6 rounded-lg"
             />
             <time dateTime={blog.publishedAt} className="text-sm text-gray-500 mb-4 block">
-                {new Date(blog.publishedAt).toLocaleDateString()}
+                {new Date(blog.publishedAt).toLocaleDateString('ja-JP', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })}
             </time>
             <div
-                className="prose prose-sm lg:prose-xl max-w-none"
+                className="prose prose-sm lg:prose-base max-w-none"
                 dangerouslySetInnerHTML={{ __html: blog.content }}
             />
         </article>

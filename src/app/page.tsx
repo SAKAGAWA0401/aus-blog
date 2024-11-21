@@ -1,3 +1,6 @@
+// ISRの再生成間隔を設定
+export const revalidate = 600; // 10分ごとに再生成
+
 import Link from 'next/link'
 import Image from 'next/image'
 // import { mockPosts } from '@/lib/mockData' mockPosts→blogs,post→blogに変換
@@ -26,7 +29,11 @@ export default async function Home() {
               <div className="ml-4 flex-1">
                 <h2 className="text-xl font-semibold md:text-xl mb-2">{topContent.title}</h2>
                 <time dateTime={topContent.publishedAt} className="text-sm text-gray-500">
-                  {new Date(topContent.publishedAt).toLocaleDateString()}
+                  {new Date(topContent.publishedAt).toLocaleDateString('ja-JP', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })} 
                 </time>
               </div>
             </article>
@@ -51,7 +58,11 @@ export default async function Home() {
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
                 <time dateTime={post.publishedAt} className="text-sm text-gray-500">
-                  {new Date(post.publishedAt).toLocaleDateString()}
+                  {new Date(post.publishedAt).toLocaleDateString('ja-JP', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })}
                 </time>
               </div>
             </article>
