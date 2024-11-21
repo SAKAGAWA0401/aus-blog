@@ -58,6 +58,7 @@ export default function RootLayout({ children, showProfile = true }: LayoutProps
         <meta name="keywords" content="オーストラリア留学, ワーキングホリデー, 未婚カップル, 共同生活, FX, お金, 家探し, 仕事" />
         <meta name="author" content="Your Name" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="https://aus-blog.sloperiver.com/favicon.svg" />
         <link rel="canonical" href="https://aus-blog.sloperiver.com/" />
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:type" content="website" />
