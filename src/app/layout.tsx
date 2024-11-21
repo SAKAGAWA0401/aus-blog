@@ -17,9 +17,9 @@ export const metadata = {
     url: 'https://aus-blog.sloperiver.com/',
     images: [
       {
-        url: 'https://aus-blog.sloperiver.com/icon.svg',
-        width: 600,
-        height: 600,
+        url: 'https://aus-blog.sloperiver.com/icon.png',
+        width: 1024,
+        height: 1024,
         alt: 'オーストラリアでのワーキングホリデー',
       },
     ],
@@ -30,7 +30,7 @@ export const metadata = {
     site: '@limitedaus',
     title: '純ジャパアラサー、オーストラリアワーホリ留学する',
     description: '30歳間近ギリギリでのワーキングホリデー、未婚カップルが海外で共同生活をする上でのノウハウや生活に役立ち情報を発信するブログです。',
-    image: 'https://aus-blog.sloperiver.com/icon.svg',
+    image: 'https://aus-blog.sloperiver.com/icon.png',
   },
 };
 
@@ -62,7 +62,7 @@ export default function RootLayout({ children, showProfile = true }: LayoutProps
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="純ジャパアラサー、オーストラリアワーホリ留学する" />
-        <meta property="og:image" content="https://aus-blog.sloperiver.com/icon.svg" />
+        <meta property="og:image" content="https://aus-blog.sloperiver.com/icon.png" />
         <script type="application/ld+json">
           {`
             {
@@ -79,7 +79,7 @@ export default function RootLayout({ children, showProfile = true }: LayoutProps
                 "name": "sloperiver.com"
               },
               "datePublished": "2024-11-01",
-              "image": "https://aus-blog.sloperiver.com/icon.svg"
+              "image": "https://aus-blog.sloperiver.com/icon.png"
             }
           `}
         </script>
