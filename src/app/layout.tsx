@@ -17,8 +17,8 @@ export const metadata = {
     url: 'https://aus-blog.sloperiver.com/',
     images: [
       {
-        url: '/images/og-image.jpg',
-        width: 800,
+        url: 'https://aus-blog.sloperiver.com/icon.svg',
+        width: 600,
         height: 600,
         alt: 'オーストラリアでのワーキングホリデー',
       },
@@ -27,10 +27,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@your_twitter_handle',
+    site: '@limitedaus',
     title: '純ジャパアラサー、オーストラリアワーホリ留学する',
     description: '30歳間近ギリギリでのワーキングホリデー、未婚カップルが海外で共同生活をする上でのノウハウや生活に役立ち情報を発信するブログです。',
-    image: '/images/twitter-card.jpg',
+    image: 'https://aus-blog.sloperiver.com/icon.svg',
   },
 };
 
@@ -62,6 +62,7 @@ export default function RootLayout({ children, showProfile = true }: LayoutProps
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="純ジャパアラサー、オーストラリアワーホリ留学する" />
+        <meta property="og:image" content="https://aus-blog.sloperiver.com/icon.svg" />
         <script type="application/ld+json">
           {`
             {
@@ -69,16 +70,16 @@ export default function RootLayout({ children, showProfile = true }: LayoutProps
               "@type": "Blog",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://yourdomain.com"
+                "@id": "https://aus-blog.sloperiver.com/"
               },
               "headline": "純ジャパアラサー、オーストラリアワーホリ留学する",
               "description": "30歳間近ギリギリでのワーキングホリデー、未婚カップルが海外で共同生活をする上でのノウハウや生活に役立ち情報を発信するブログです。",
               "author": {
                 "@type": "Person",
-                "name": "Your Name"
+                "name": "sloperiver.com"
               },
-              "datePublished": "2023-01-01",
-              "image": "/images/og-image.jpg"
+              "datePublished": "2024-11-01",
+              "image": "https://aus-blog.sloperiver.com/icon.svg"
             }
           `}
         </script>
