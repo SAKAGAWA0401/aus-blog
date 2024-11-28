@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 // import { mockPosts } from '@/lib/mockData'
 // import { getBlogs, getBlogBySlug } from '@/lib/microcms'
 import { getBlogPostBySlug } from '@/lib/actions/blog-actions'
-import BlogPostClient from './BlogPostClient'
+import BlogPostClient from './blog-post-client'
   
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;  // 非同期でparamsを解決
