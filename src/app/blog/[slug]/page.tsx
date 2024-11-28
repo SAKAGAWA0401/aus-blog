@@ -53,20 +53,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     day: '2-digit',
                   })}
             </time>
-            {/* <div className="prose prose-sm lg:prose-base max-w-none">
-                {dangerouslySetInnerHTML={{ __html: blog.content }}}
-                {content}
-            </div> */}
             <BlogPostClient content={blog.content} />
-            {/* <div className="prose prose-sm lg:prose-base max-w-none">
-                {parsedContent.map((item, index) =>
-                item.type === 'embed' ? (
-                    <IframelyEmbed key={index} content={item.content} />
-                ) : (
-                    <div key={index} dangerouslySetInnerHTML={{ __html: item.content }} />
-                )
-                )}
-            </div> */}
         </article>
     )
 }
