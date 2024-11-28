@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 // import { mockPosts } from '@/lib/mockData'
 // import { getBlogs, getBlogBySlug } from '@/lib/microcms'
 import { getBlogPostBySlug } from '@/lib/actions/blog-actions'
-
+import BlogPostClient from './BlogPostClient'
   
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;  // 非同期でparamsを解決
@@ -53,10 +53,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     day: '2-digit',
                   })}
             </time>
-            <div
-                className="prose prose-sm lg:prose-base max-w-none"
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-            />
+            {/* <div className="prose prose-sm lg:prose-base max-w-none">
+                {dangerouslySetInnerHTML={{ __html: blog.content }}}
+                {content}
+            </div> */}
+            <BlogPostClient content={blog.content} />
+            {/* <div className="prose prose-sm lg:prose-base max-w-none">
+                {parsedContent.map((item, index) =>
+                item.type === 'embed' ? (
+                    <IframelyEmbed key={index} content={item.content} />
+                ) : (
+                    <div key={index} dangerouslySetInnerHTML={{ __html: item.content }} />
+                )
+                )}
+            </div> */}
         </article>
     )
 }
