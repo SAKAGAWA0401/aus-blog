@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import IframelyEmbed from '@/components/iframely-embed';
-import { parseContent, ParsedContent } from '@/utils/parseContent';
+import IframelyEmbed from '@/components/IframelyEmbed';
+import { parseContent, ParsedContent } from '@/utils/parse-content';
 
 interface BlogPostClientProps {
   content: string;
