@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import IframelyEmbed from '@/components/IframelyEmbed';
 import { parseContent, ParsedContent } from '@/utils/parse-content';
 
@@ -9,14 +8,7 @@ interface BlogPostClientProps {
 }
 
 export default function BlogPostClient({ content }: BlogPostClientProps) {
-  const parsedContent: ParsedContent[] = parseContent(content); // クライアントサイドでパース処理
-
-  useEffect(() => {
-    // Iframelyスクリプトを初期化
-    if (window.iframely) {
-      window.iframely.load();
-    }
-  }, []);
+  const parsedContent: ParsedContent[] = parseContent(content);
 
   return (
     <div className="prose prose-sm lg:prose-base max-w-none">
